@@ -1,13 +1,13 @@
 from pytube import YouTube
-from sys import argv
 
 
 def download():
     link = input("Input YouTube link: ")
     yt = YouTube(link)
-
-    print(f"Title: {yt.title}")
-    print(f"Title: {yt.views}")
+    res = yt.streams.get_highest_resolution()
+    print(f"Downloading...")
+    res.download('./YouTubeVideos/')
+    print(f"Title: {yt.title}, has downloaded.")
 
 
 def main():
